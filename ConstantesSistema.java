@@ -1,5 +1,6 @@
 public class ConstantesSistema {
-    // Temperatura
+    //-------------------CONSTANTES DEL SISTEMA-------------------
+    // Humedad y temperatura
     public static final float TEMP_MIN = 16.0f;
     public static final float TEMP_MAX = 30.0f;
         

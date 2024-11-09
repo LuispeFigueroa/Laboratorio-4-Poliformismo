@@ -9,15 +9,15 @@ public class VistaGrupo6 implements BMWClaseC {
 
   @Override
   public void mostrarMenu(){
-    System.out.println("Bienvenido al sistema de climatizacion de su BMW")
-    System.out.println("---------------------------------")
-    System.out.println("1. Mostar estado del sistema")
-    System.out.println("2. Ajustar temperatura")
-    System.out.println("3. Ajustar ventilacion")
-    System.out.println("4. Control de humedad")
-    System.out.println("5. Control de desempañado")
-    System.out.println("6. Salir")
-    System.out.println("---------------------------------")
+    System.out.println("Bienvenido al sistema de climatizacion de su BMW");
+    System.out.println("---------------------------------");
+    System.out.println("1. Mostar estado del sistema");
+    System.out.println("2. Ajustar temperatura");
+    System.out.println("3. Ajustar ventilacion");
+    System.out.println("4. Control de humedad");
+    System.out.println("5. Control de desempañado");
+    System.out.println("6. Salir");
+    System.out.println("---------------------------------");
   }
 
   //Metodo para poder pedir temperatura al usuario, se utiliza el override
@@ -44,6 +44,6 @@ public class VistaGrupo6 implements BMWClaseC {
         }
         return temperatura;
     }
-
+    
 }
 

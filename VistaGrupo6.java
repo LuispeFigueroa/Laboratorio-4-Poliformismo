@@ -2,11 +2,10 @@ import java.util.Scanner;
 
 /**
  * VistaGrupo6 es la clase de vista para interactuar con el sistema de climatización 
- * de un vehículo BMW Clase C. Implementa la interfaz BMWClaseC y proporciona 
- * métodos para mostrar el menú, ajustar la temperatura, la ventilación, la humedad, 
- * y otros parámetros de climatización.
+ * de un vehículo BMW Clase C. Proporciona métodos para recoger datos del usuario 
+ * sin imprimir mensajes en la consola.
  */
-public class VistaGrupo6 implements BMWClaseC {
+public class VistaGrupo6 {
     private Scanner scanner;
 
     /**
@@ -17,13 +16,7 @@ public class VistaGrupo6 implements BMWClaseC {
         scanner = new Scanner(System.in);
     }
 
-    /**
-     * Muestra el menú principal del sistema de climatización, con opciones para 
-     * ajustar distintos parámetros.
-     */
-    @Override
     public void mostrarMenu() {
-        System.out.println("Bienvenido al sistema de climatización de su BMW");
         System.out.println("---------------------------------");
         System.out.println("1. Mostrar estado del sistema");
         System.out.println("2. Ajustar temperatura");
@@ -32,63 +25,20 @@ public class VistaGrupo6 implements BMWClaseC {
         System.out.println("5. Control de desempañador");
         System.out.println("6. Salir");
         System.out.println("---------------------------------");
+        System.out.print("Seleccione una opción: ");
     }
 
     /**
-     * Solicita al usuario que ingrese la temperatura deseada y valida que esté en el rango permitido.
+     * Muestra el menú principal del sistema de climatización, utilizado en la clase Principal.
+     */
+  
+    /**
+     * Solicita al usuario que ingrese la temperatura deseada.
      *
      * @return la temperatura deseada ingresada por el usuario en grados Celsius.
      */
-    @Override
     public float pedirTemperatura() {
-        float temperatura = 0;
-        boolean entradaValida = false;
-        
-        while (!entradaValida) {
-            try {
-                System.out.print("\nIngrese temperatura deseada (16.0°C - 30.0°C): ");
-                temperatura = scanner.nextFloat();
-                
-                if (temperatura >= ConstantesSistema.TEMP_MIN && 
-                    temperatura <= ConstantesSistema.TEMP_MAX) {
-                    entradaValida = true;
-                } else {
-                    mostrarError("Temperatura fuera de rango permitido");
-                }
-            } catch (Exception e) {
-                mostrarError("Por favor, ingrese un número válido");
-                scanner.nextLine(); // Limpiar buffer
-            }
-        }
-        return temperatura;
-    }
-
-    /**
-     * Muestra la temperatura actual del sistema tanto en el interior como en el exterior.
-     *
-     * @param tempInt la temperatura interior en grados Celsius.
-     * @param tempExt la temperatura exterior en grados Celsius.
-     */
-    @Override
-    public void mostrarTemperatura(float tempInt, float tempExt) {
-        System.out.println("\n=== TEMPERATURAS ACTUALES ===");
-        System.out.printf("Temperatura Interior: %.1f°C\n", tempInt);
-        System.out.printf("Temperatura Exterior: %.1f°C\n", tempExt);
-        System.out.println("============================");
-    }
-
-    /**
-     * Muestra el estado actual de la ventilación, incluyendo el nivel y la zona.
-     *
-     * @param nivel el nivel de ventilación.
-     * @param zona la zona de ventilación.
-     */
-    @Override
-    public void mostrarEstadoVentilacion(String nivel, String zona) {
-        System.out.println("\n=== ESTADO DE VENTILACIÓN ===");
-        System.out.println("Nivel actual: " + nivel);
-        System.out.println("Zona actual:  " + zona);
-        System.out.println("===========================");
+        return scanner.nextFloat();
     }
 
     /**
@@ -96,28 +46,13 @@ public class VistaGrupo6 implements BMWClaseC {
      *
      * @return el nivel de ventilación seleccionado por el usuario.
      */
-    @Override
     public String pedirNivelVentilacion() {
-        System.out.println("\nNiveles de ventilación disponibles:");
-        System.out.println("1. " + ConstantesSistema.VENT_BAJO);
-        System.out.println("2. " + ConstantesSistema.VENT_MEDIO);
-        System.out.println("3. " + ConstantesSistema.VENT_ALTO);
-
-        while (true) {
-            try {
-                System.out.print("\nSeleccione nivel (1-3): ");
-                int opcion = scanner.nextInt();
-                switch (opcion) {
-                    case 1: return ConstantesSistema.VENT_BAJO;
-                    case 2: return ConstantesSistema.VENT_MEDIO;
-                    case 3: return ConstantesSistema.VENT_ALTO;
-                    default:
-                        mostrarError("Opción no válida");
-                }
-            } catch (Exception e) {
-                mostrarError("Por favor, ingrese un número válido");
-                scanner.nextLine();
-            }
+        int opcion = scanner.nextInt();
+        switch (opcion) {
+            case 1: return ConstantesSistema.VENT_BAJO;
+            case 2: return ConstantesSistema.VENT_MEDIO;
+            case 3: return ConstantesSistema.VENT_ALTO;
+            default: return "";
         }
     }
 
@@ -126,51 +61,29 @@ public class VistaGrupo6 implements BMWClaseC {
      *
      * @return la zona de ventilación seleccionada por el usuario.
      */
-    @Override
     public String pedirZonaVentilacion() {
-        System.out.println("\nZonas de ventilación disponibles:");
-        System.out.println("1. " + ConstantesSistema.ZONA_PARABRISAS);
-        System.out.println("2. " + ConstantesSistema.ZONA_FRONTAL);
-        System.out.println("3. " + ConstantesSistema.ZONA_PIES);
-
-        while (true) {
-            try {
-                System.out.print("\nSeleccione zona (1-3): ");
-                int opcion = scanner.nextInt();
-                switch (opcion) {
-                    case 1: return ConstantesSistema.ZONA_PARABRISAS;
-                    case 2: return ConstantesSistema.ZONA_FRONTAL;
-                    case 3: return ConstantesSistema.ZONA_PIES;
-                    default:
-                        mostrarError("Opción no válida");
-                }
-            } catch (Exception e) {
-                mostrarError("Por favor, ingrese un número válido");
-                scanner.nextLine();
-            }
+        int opcion = scanner.nextInt();
+        switch (opcion) {
+            case 1: return ConstantesSistema.ZONA_PARABRISAS;
+            case 2: return ConstantesSistema.ZONA_FRONTAL;
+            case 3: return ConstantesSistema.ZONA_PIES;
+            default: return "";
         }
     }
 
     /**
-     * Muestra el nivel actual de humedad en el sistema de climatización.
+     * Solicita al usuario que seleccione el nivel de humedad deseado.
      *
-     * @param nivel el nivel de humedad actual.
+     * @return el nivel de humedad seleccionado por el usuario.
      */
-    @Override
-    public void mostrarHumedad(String nivel) {
-        System.out.println("\n=== NIVEL DE HUMEDAD ===");
-        System.out.println("Nivel actual: " + nivel);
-        System.out.println("======================");
-    }
-
-    /**
-     * Muestra un mensaje de error con el texto especificado.
-     *
-     * @param mensaje el mensaje de error a mostrar.
-     */
-    @Override
-    public void mostrarError(String mensaje) {
-        System.out.println("ERROR: " + mensaje);
+    public String pedirNivelHumedad() {
+        int opcion = scanner.nextInt();
+        switch (opcion) {
+            case 1: return ConstantesSistema.HUM_BAJO;
+            case 2: return ConstantesSistema.HUM_MEDIO;
+            case 3: return ConstantesSistema.HUM_ALTO;
+            default: return "";
+        }
     }
 
     /**
@@ -178,22 +91,37 @@ public class VistaGrupo6 implements BMWClaseC {
      *
      * @return la opción del menú seleccionada por el usuario.
      */
-    @Override
     public int obtenerOpcionMenu() {
-        System.out.print("\nSeleccione una opción del menú: ");
         return scanner.nextInt();
     }
 
-    /**
-     * Muestra el estado del desempañador.
-     *
-     * @param activo el estado del desempañador (true si está activado, false si está desactivado).
-     */
-    @Override
+    // Métodos adicionales según el diagrama UML, sin imprimir en consola
+
+    public void mostrarError(String mensaje) {
+        // Método para mostrar errores, no imprime en consola.
+    }
+
+    public void mostrarAviso(String aviso) {
+        // Método para mostrar avisos, no imprime en consola.
+    }
+
+    public void mostrarEstado(String estado) {
+        // Método para mostrar el estado del sistema, no imprime en consola.
+    }
+
+    public void mostrarTemperatura(float tempInt, float tempExt) {
+        // Método para mostrar las temperaturas, no imprime en consola.
+    }
+
+    public void mostrarEstadoVentilacion(String nivel, String zona) {
+        // Método para mostrar el estado de la ventilación, no imprime en consola.
+    }
+
+    public void mostrarHumedad(String nivel) {
+        // Método para mostrar el nivel de humedad, no imprime en consola.
+    }
+
     public void mostrarDesempañador(boolean activo) {
-        String estado = activo ? "Activado" : "Desactivado";
-        System.out.println("\n=== DESEMPAÑADOR ===");
-        System.out.println("Estado actual: " + estado);
-        System.out.println("====================");
+        // Método para mostrar el estado del desempañador, no imprime en consola.
     }
 }

@@ -61,6 +61,63 @@ public class VistaGrupo6 implements BMWClaseC {
         System.out.println("Zona actual:  " + zona);
         System.out.println("===========================");
     }
+
+    @Override
+    public String pedirNivelVentilacion() {
+        System.out.println("\nNiveles de ventilación disponibles:");
+        System.out.println("1. " + ConstantesSistema.VENT_BAJO);
+        System.out.println("2. " + ConstantesSistema.VENT_MEDIO);
+        System.out.println("3. " + ConstantesSistema.VENT_ALTO);
+
+        while (true) {
+            try {
+                System.out.print("\nSeleccione nivel (1-3): ");
+                int opcion = scanner.nextInt();
+                switch (opcion) {
+                    case 1: return ConstantesSistema.VENT_BAJO;
+                    case 2: return ConstantesSistema.VENT_MEDIO;
+                    case 3: return ConstantesSistema.VENT_ALTO;
+                    default:
+                        mostrarError("Opción no válida");
+                }
+            } catch (Exception e) {
+                mostrarError("Por favor, ingrese un número válido");
+                scanner.nextLine();
+            }
+        }
+    }
+
+    @Override
+    public String pedirZonaVentilacion() {
+        System.out.println("\nZonas de ventilación disponibles:");
+        System.out.println("1. " + ConstantesSistema.ZONA_PARABRISAS);
+        System.out.println("2. " + ConstantesSistema.ZONA_FRONTAL);
+        System.out.println("3. " + ConstantesSistema.ZONA_PIES);
+
+        while (true) {
+            try {
+                System.out.print("\nSeleccione zona (1-3): ");
+                int opcion = scanner.nextInt();
+                switch (opcion) {
+                    case 1: return ConstantesSistema.ZONA_PARABRISAS;
+                    case 2: return ConstantesSistema.ZONA_FRONTAL;
+                    case 3: return ConstantesSistema.ZONA_PIES;
+                    default:
+                        mostrarError("Opción no válida");
+                }
+            } catch (Exception e) {
+                mostrarError("Por favor, ingrese un número válido");
+                scanner.nextLine();
+            }
+        }
+    }
+
+    @Override
+    public void mostrarHumedad(String nivel) {
+        System.out.println("\n=== NIVEL DE HUMEDAD ===");
+        System.out.println("Nivel actual: " + nivel);
+        System.out.println("======================");
+    }
     
 }
 

@@ -1,5 +1,7 @@
 //Vista para el grupo, se llaman todos los metodos de la clase grupo
 
+import java.util.Scanner;
+
 public class VistaGrupo6 implements BMWClaseC {
   private Scanner scanner;
 
@@ -43,6 +45,21 @@ public class VistaGrupo6 implements BMWClaseC {
             }
         }
         return temperatura;
+    }
+    @Override
+    public void mostrarTemperatura(float tempInt, float tempExt) {
+        System.out.println("\n=== TEMPERATURAS ACTUALES ===");
+        System.out.printf("Temperatura Interior: %.1f°C\n", tempInt);
+        System.out.printf("Temperatura Exterior: %.1f°C\n", tempExt);
+        System.out.println("============================");
+    }
+
+    @Override
+    public void mostrarEstadoVentilacion(String nivel, String zona) {
+        System.out.println("\n=== ESTADO DE VENTILACIÓN ===");
+        System.out.println("Nivel actual: " + nivel);
+        System.out.println("Zona actual:  " + zona);
+        System.out.println("===========================");
     }
     
 }

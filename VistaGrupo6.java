@@ -23,13 +23,13 @@ public class VistaGrupo6 implements BMWClaseC {
      */
     @Override
     public void mostrarMenu() {
-        System.out.println("Bienvenido al sistema de climatizacion de su BMW");
+        System.out.println("Bienvenido al sistema de climatización de su BMW");
         System.out.println("---------------------------------");
         System.out.println("1. Mostrar estado del sistema");
         System.out.println("2. Ajustar temperatura");
-        System.out.println("3. Ajustar ventilacion");
+        System.out.println("3. Ajustar ventilación");
         System.out.println("4. Control de humedad");
-        System.out.println("5. Control de desempañado");
+        System.out.println("5. Control de desempañador");
         System.out.println("6. Salir");
         System.out.println("---------------------------------");
     }
@@ -168,7 +168,32 @@ public class VistaGrupo6 implements BMWClaseC {
      *
      * @param mensaje el mensaje de error a mostrar.
      */
+    @Override
     public void mostrarError(String mensaje) {
         System.out.println("ERROR: " + mensaje);
+    }
+
+    /**
+     * Obtiene la opción seleccionada en el menú por el usuario.
+     *
+     * @return la opción del menú seleccionada por el usuario.
+     */
+    @Override
+    public int obtenerOpcionMenu() {
+        System.out.print("\nSeleccione una opción del menú: ");
+        return scanner.nextInt();
+    }
+
+    /**
+     * Muestra el estado del desempañador.
+     *
+     * @param activo el estado del desempañador (true si está activado, false si está desactivado).
+     */
+    @Override
+    public void mostrarDesempañador(boolean activo) {
+        String estado = activo ? "Activado" : "Desactivado";
+        System.out.println("\n=== DESEMPAÑADOR ===");
+        System.out.println("Estado actual: " + estado);
+        System.out.println("====================");
     }
 }

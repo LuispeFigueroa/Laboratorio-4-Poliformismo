@@ -1,4 +1,7 @@
+
 import java.util.Scanner;
+
+
 
 /**
  * VistaGrupo6 es la clase de vista para interactuar con el sistema de climatización 

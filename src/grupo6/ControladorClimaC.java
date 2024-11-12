@@ -1,6 +1,9 @@
 /**
  * ControladorClimaC maneja la lógica del sistema de climatización para un vehículo BMW Clase C.
  */
+
+ 
+
 public class ControladorClimaC {
     private VistaGrupo6 vista;
     private float tempInt;  // Temperatura interior
@@ -70,7 +73,8 @@ public class ControladorClimaC {
             tempInt = vista.pedirTemperatura();
             return "Temperatura ajustada a " + tempInt + "°C.";
         } else {
-            return "El sistema está apagado.";
+            return
+              "El sistema está apagado.";
         }
     }
 
